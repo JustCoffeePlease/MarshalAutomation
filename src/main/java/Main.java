@@ -21,10 +21,17 @@ public class Main {
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Установка времени явного ожидания, пока не появится прописанный элемент
-        WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
-        driver.get("https://google.com");
+//        // Установка времени явного ожидания, пока не появится прописанный элемент
+//        WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
+//        driver.get("https://google.com");
+
+        driver.get("https://www.avito.ru/");
+        // Применение поиска элемента и запись его свойства 'Properties'(Вкладка на панели DOM)
+        WebElement element = driver.findElement(By.xpath("(//a[text()='Транспорт'])[2]"));
+        String parameter = element.getAttribute("baseURI");
+
+        System.out.println(parameter);
     }
 
 }
