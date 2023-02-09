@@ -26,10 +26,10 @@ public class Main {
 //                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
 //        driver.get("https://google.com");
 
-        driver.get("https://www.avito.ru/");
+        driver.get("https://www.youtube.com");
         // Применение поиска элемента и запись его свойства 'Properties'(Вкладка на панели DOM)
-        WebElement element = driver.findElement(By.xpath("(//a[text()='Транспорт'])[2]"));
-        String parameter = element.getAttribute("baseURI");
+        WebElement element = driver.findElement(By.xpath("(//div[@class='yt-spec-touch-feedback-shape__fill'])[4]"));
+        String parameter = element.getCssValue("will-change");
 
         System.out.println(parameter);
     }
