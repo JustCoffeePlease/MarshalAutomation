@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,26 +13,52 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Подключение вебдрайвера
         System.setProperty("webdriver.chrome.driver","C:\\Users\\Алексей\\Desktop\\chromedriver_win32\\chromedriver.exe");
+
         WebDriver driver = new ChromeDriver();
 
-        // Настройка драйвера
-        // Установка времени неявного ожидания перед поиском
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-//        // Установка времени явного ожидания, пока не появится прописанный элемент
-//        WebElement element = (new WebDriverWait(driver, Duration.ofSeconds(10))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
-//        driver.get("https://google.com");
+        try {
+            driver.get("https://crossbrowsertesting.github.io/drag-and-drop");
+            Thread.sleep(2000);
 
-        driver.get("https://www.udemy.com/");
-        // Применение поиска элемента и запись его свойства 'Properties'(Вкладка на панели DOM)
-        WebElement element = driver.findElement(By.xpath("//input[@name='q']"));
+            WebElement element_drag = driver.findElement(By.id("draggable"));
+            WebElement element_drop = driver.findElement(By.id("droppable"));
 
-        element.sendKeys("Java", Keys.ENTER);
+            Actions actions = new Actions(driver);
+
+//            actions.moveToElement(element_drag)
+//                    .clickAndHold()
+//                    .moveToElement(element_drop)
+//                    .release()
+//                    .perform();
+            // Простой вариант
+            actions.dragAndDrop(element_drag, element_drop);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            Thread.sleep(20000);
+            driver.quit();
+        }
+
+
+
+//        actions
+//                .pause()                // Пауза на заданное время
+//                .moveToElement()        // Наведение курсора мыши
+//                .keyDown()              // Нажатие на кнопку
+//                .keyUp()                // Отжтмаем клик
+//                .clickAndHold()         // Нажать и держать
+//                .release()              // Отпускить клик
+//                .build()                // Собрать все примененные действия
+//                .perform();             // Применение билда
+
+
+
     }
 
 }
