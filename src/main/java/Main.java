@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,12 +27,11 @@ public class Main {
 //                .until(ExpectedConditions.presenceOfElementLocated(By.id("123"))));
 //        driver.get("https://google.com");
 
-        driver.get("https://www.youtube.com");
+        driver.get("https://www.udemy.com/");
         // Применение поиска элемента и запись его свойства 'Properties'(Вкладка на панели DOM)
-        WebElement element = driver.findElement(By.xpath("(//div[@class='yt-spec-touch-feedback-shape__fill'])[4]"));
-        String parameter = element.getCssValue("will-change");
+        WebElement element = driver.findElement(By.xpath("//input[@name='q']"));
 
-        System.out.println(parameter);
+        element.sendKeys("Java", Keys.ENTER);
     }
 
 }
