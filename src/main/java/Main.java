@@ -21,44 +21,18 @@ public class Main {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        try {
-            driver.get("https://crossbrowsertesting.github.io/drag-and-drop");
-            Thread.sleep(2000);
+        driver.get("https://www.google.com/");
 
-            WebElement element_drag = driver.findElement(By.id("draggable"));
-            WebElement element_drop = driver.findElement(By.id("droppable"));
+        Actions actions = new Actions(driver);
+        WebElement searchField = driver.findElement(By.xpath("//input[@class='gLFyf']"));
 
-            Actions actions = new Actions(driver);
+        searchField.sendKeys("auto", Keys.ENTER);
 
-//            actions.moveToElement(element_drag)
-//                    .clickAndHold()
-//                    .moveToElement(element_drop)
-//                    .release()
-//                    .perform();
-            // Простой вариант
-            actions.dragAndDrop(element_drag, element_drop);
+        WebElement resultCount = driver.findElement(By.id("result-stats"));
+        String resultParameter = resultCount.getText();
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            Thread.sleep(20000);
-            driver.quit();
-        }
+        System.out.println(resultParameter);
 
-
-
-//        actions
-//                .pause()                // Пауза на заданное время
-//                .moveToElement()        // Наведение курсора мыши
-//                .keyDown()              // Нажатие на кнопку
-//                .keyUp()                // Отжтмаем клик
-//                .clickAndHold()         // Нажать и держать
-//                .release()              // Отпускить клик
-//                .build()                // Собрать все примененные действия
-//                .perform();             // Применение билда
-
-
-
-    }
+     }
 
 }
