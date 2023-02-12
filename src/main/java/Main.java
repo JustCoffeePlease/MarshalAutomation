@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -11,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 
 
 public class Main {
@@ -24,24 +23,32 @@ public class Main {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try{
-            driver.get("https://pagination.js.org/");
-            Thread.sleep(2000);
+            driver.get("file:///C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9/IdeaProjects/MarshalAutomation/src/main/java/index.html");
+            Thread.sleep(5000);
 
-            List<WebElement> elementList = (List<WebElement>) driver.findElements(By.xpath("//div[@class = 'data-container']/ul/li"));
-            List<WebElement> pagesList = (List<WebElement>) driver.findElements(By.xpath("//div[@class = 'paginationjs-pages']/ul/li"));
-            String text = elementList.get(5).getText();
+            WebElement element_a = driver.findElement(By.id("a"));
+            WebElement element_b = driver.findElement(By.id("b"));
+            WebElement element_c = driver.findElement(By.id("c"));
 
-            System.out.println(text);
+            element_a.click();
+            Alert alert_a = wait.until(alertIsPresent());
+            alert_a.accept();
 
 
-            pagesList.get(2).click();
-            wait.until(ExpectedConditions.stalenessOf(elementList.get(5)));
-            // stalenessOf - ожидание, пока пропадет указанный элемент
+            element_b.click();
+            Alert promt = wait.until(alertIsPresent());
+            promt.sendKeys("Super ");
+            promt.accept();
 
-            elementList = (List<WebElement>) driver.findElements(By.xpath("//div[@class = 'data-container']/ul/li"));
-            text = elementList.get(5).getText();
+            Alert alert_b = wait.until(alertIsPresent());
+            Thread.sleep(5000);
+            alert_b.accept();
 
-            System.out.println(text);
+
+            element_c.click();
+            Alert alert_c = wait.until(alertIsPresent());
+            alert_c.dismiss();
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -50,12 +57,4 @@ public class Main {
         }
      }
 }
-/*
-Созданы два листа:
-    elementList - информация объектов со страницы
-    pagesList - информация о страницах
-Таким образом, в начале информация об объектах первой страницы передается в elementList.
-После этого вызывается вторая страница. После вызова в elementList собирается информация со второй страницы.
-Чтобы вторая страница гарантированно успела подгрузиться, используется wait.until(ExpectedConditions.stalenessOf(elementList.get(5)));
-Перед переключем страницы и после переключения переменной text присваивается 5 элемент страницы. Переменная text выводится на экран
-*/
+

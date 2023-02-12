@@ -1,0 +1,38 @@
+attributeContains       |                      | Содержит
+attributeToBe           | Обращение к атрибуту | Содержит (указываем полное название)
+attributeToNotEmpty     |                      |
+
+elementToBeSelected     | Проверка можно ли выбрать элемент
+elementToBeClickable    | Виден ли элемент и можно ли по нему кликнуть
+
+invisibilityOf                      | Проверка      | Проверка на то, что элемент не видим
+invisibilityOfAllElements           | невидимости   | Проверка на то, что все элементы из списка не видимы
+invisibilityOfElementLocated        | элемента      | Проверка на то, что элемент не видим или отсутствует в DOM
+invisibilityOfElementWithText       | при условиях  | Проверка на то, что элемент не видим или отсутствует в DOM по указанному тексту
+
+visibility      | Аналог invisibilityOf, проверка видимости элемента при условиях
+
+not(ExpectedCondition<?>condition)      | Получение обратного эффекта от того, что в скобках
+
+numberOfElementsToBe                | Ожидание  | Ожидание, пока количество элементов не станет такое как указано в скобках
+numberOfElementsToBeLessThan        | элементов | Ожидание, пока количество элементов не станет меньше указанного
+numberOfElementsToBeMoreThan        | локатора  | Ожидание, пока количество элементов не станет больше указанного
+
+presenceOfAllElementsLocatedBy      | Ожидание появление элемента на web странице
+presenceOfElementsLocatedBy         | Ожидание появление элемента на в DOM
+
+stalenessOf         | Ожидание исчезновения
+
+textToBe                            | Проверка наличия указанного текста
+textToBePresentInElement            | Проверка присутствия в каком-то элементе текста
+textToBePresentInElementValue       | Проверка наличия указанного текста у атрибута элемента
+
+titleContains   | title содержит указанный текст
+titleIs         | title совпадает с указанным
+
+urlContains     | url содержит указанный текст
+urlMatches      | url совпадает с указанным
+
+
+
+
