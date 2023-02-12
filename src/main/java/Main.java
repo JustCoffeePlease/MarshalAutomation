@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
@@ -21,34 +22,46 @@ public class Main {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // js Необходим для выполнения команды открытия нового окна
+        JavascriptExecutor js = (JavascriptExecutor)driver;
 
+        // Здесь работаем с окнами и вкладками
+        // Selenium умеет работать только с окнами
+        // Открытие новых вкладок расценивается как открытие нового окна
         try{
             driver.get("file:///C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9/IdeaProjects/MarshalAutomation/src/main/java/index.html");
             Thread.sleep(5000);
 
-            WebElement element_a = driver.findElement(By.id("a"));
-            WebElement element_b = driver.findElement(By.id("b"));
-            WebElement element_c = driver.findElement(By.id("c"));
+            // Получаем дескриптор первого окна и записываем в переменную windowOne
+            String windowOne = driver.getWindowHandle();
 
-            element_a.click();
-            Alert alert_a = wait.until(alertIsPresent());
-            alert_a.accept();
+            // В Selenium нет возможности открыть новое окно, для этого используется js
+            // Открытие нового окна
+            js.executeScript("window.open()");
 
+            // Записываем дескрипторы текущих окон, которые открыты
+            Set<String> currentWindows = driver.getWindowHandles();
 
-            element_b.click();
-            Alert promt = wait.until(alertIsPresent());
-            promt.sendKeys("Super ");
-            promt.accept();
+            String windowTwo = null;
 
-            Alert alert_b = wait.until(alertIsPresent());
-            Thread.sleep(5000);
-            alert_b.accept();
+            // Перебор списка, который получился из всех дескрипторов
+            // и проверка условия на эквивалентность с первым окном
+            // Если равенство не соблюдается, в windowTwo записываем текущий дескриптор по перебору
+            for (String window : currentWindows) {
+                if(!window.equals(windowOne)) {
+                    windowTwo = window;
+                    break;
+                }
+            };
 
+            // Переключение на окно с hash windowTwo для того, чтобы начать с ним работать
+            driver.switchTo().window(windowTwo);
+            driver.get("file:///C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9/IdeaProjects/MarshalAutomation/src/main/java/index.html");
 
-            element_c.click();
-            Alert alert_c = wait.until(alertIsPresent());
-            alert_c.dismiss();
-
+            // Закрытие текущей вкладки
+            driver.close();
+            // Открытие(переход) окна windowOne, с которым будет дальнейшая работа
+            driver.switchTo().window(windowOne);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
