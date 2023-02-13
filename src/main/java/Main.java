@@ -30,11 +30,9 @@ public class Main {
             driver.get("file:///C:/Users/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B5%D0%B9/IdeaProjects/MarshalAutomation/src/main/java/index.html");
             Thread.sleep(5000);
 
-            String title = driver.getTitle();
+            LoginPage loginPage = new LoginPage();
 
-            // Сначала передаем актуальный результат, потом ожидаемый
-//            Assert.assertEquals(title, "Document"); // TRUE
-            Assert.assertEquals(title, "Doqment"); // FALSE
+            loginPage.login("admin", "admin");
 
 
         } catch (InterruptedException e) {
