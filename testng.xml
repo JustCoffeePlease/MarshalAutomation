@@ -3,9 +3,22 @@
 
 
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/�������/IdeaProjects/MarshalAutomation">
-       <classes>
-           <class name="TestOne"></class>
-       </classes>
+<!--    <test verbose="2" preserve-order="true" name="C:/Users/�������/IdeaProjects/MarshalAutomation">-->
+<!--        <packages>-->
+<!--            <package name="smoke"></package>-->
+<!--        </packages>-->
+<!--    </test>-->
+    <test name = "Test1">
+        <groups>
+            <run>
+                <include name="regress"/>
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="smoke.TestOne"></class>
+            <class name="smoke.TestTwo"></class>
+        </classes>
     </test>
+
 </suite>
