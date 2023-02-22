@@ -1,5 +1,6 @@
 package tests.searchApartment;
 
+import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
 public class SearchApartmentTest extends BaseTest {
@@ -12,6 +13,7 @@ public class SearchApartmentTest extends BaseTest {
         realtHomePage
                 .enterCountRooms()
                 .clickToFound();
-    }
 
+        realtListingPage.checkCountCards();
+    }
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import pages.base.BasePage;
+import pages.listing.RealtListingPage;
 import pages.realt_home.RealtHomePage;
 
 import static common.Config.CLEAR_COOKIES_AND_STORAGE;
@@ -19,6 +20,7 @@ public class BaseTest {
     protected WebDriver driver = CommonActions.createDriver();
     protected BasePage basePage = new BasePage(driver);
     protected RealtHomePage realtHomePage = new RealtHomePage(driver);
+    protected RealtListingPage realtListingPage = new RealtListingPage(driver);
 
     // Метод отчискти куков и памяти
     @AfterTest
