@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="All Test Suite" duration-ms="10606" started-at="2023-02-27T21:50:04Z" finished-at="2023-02-27T21:50:14Z">
+    <groups>
+    </groups>
+    <test name="C:/Users/�������/IdeaProjects/MarshalAutomation" duration-ms="10606" started-at="2023-02-27T21:50:04Z" finished-at="2023-02-27T21:50:14Z">
+      <class name="tests.searchApartment.SearchApartmentTest">
+        <test-method status="PASS" signature="checkInRedirectToListing()[pri:0, instance:tests.searchApartment.SearchApartmentTest@7aea704c]" name="checkInRedirectToListing" duration-ms="10048" started-at="2023-02-27T21:50:04Z" finished-at="2023-02-27T21:50:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkInRedirectToListing -->
+        <test-method status="PASS" signature="clearCookiesAndLocalStorage()[pri:0, instance:tests.searchApartment.SearchApartmentTest@7aea704c]" name="clearCookiesAndLocalStorage" is-config="true" duration-ms="350" started-at="2023-02-27T21:50:14Z" finished-at="2023-02-27T21:50:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clearCookiesAndLocalStorage -->
+        <test-method status="PASS" signature="close()[pri:0, instance:tests.searchApartment.SearchApartmentTest@7aea704c]" name="close" is-config="true" duration-ms="807" started-at="2023-02-27T21:50:14Z" finished-at="2023-02-27T21:50:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- tests.searchApartment.SearchApartmentTest -->
+    </test> <!-- C:/Users/�������/IdeaProjects/MarshalAutomation -->
+  </suite> <!-- All Test Suite -->
+</testng-results>

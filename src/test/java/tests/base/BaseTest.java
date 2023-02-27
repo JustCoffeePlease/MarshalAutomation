@@ -22,7 +22,7 @@ public class BaseTest {
     protected RealtHomePage realtHomePage = new RealtHomePage(driver);
     protected RealtListingPage realtListingPage = new RealtListingPage(driver);
 
-    // Метод отчискти куков и памяти
+//     Метод отчискти куков и памяти
     @AfterTest
     public void clearCookiesAndLocalStorage() {
         if(CLEAR_COOKIES_AND_STORAGE){
